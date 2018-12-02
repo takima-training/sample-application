@@ -1,0 +1,20 @@
+CREATE DATABASE IF NOT EXISTS SchoolOrganisation;
+
+DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Students;
+
+CREATE TABLE Departments (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) not null,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Students (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(20),
+  last_name VARCHAR(30) NOT NULL,
+  department_id BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (department_id) REFERENCES Departments(id)
+);
+
