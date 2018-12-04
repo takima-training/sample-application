@@ -31,7 +31,13 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Object> addStudent(@RequestBody Student student) {
-        Student savedStudent = this.studentService.addStudent(student);
+        Student savedStudent;
+        try {
+            savedStudent = this.studentService.addStudent(student);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
+
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedStudent.getId()).toUri();
         return ResponseEntity.created(location).build();

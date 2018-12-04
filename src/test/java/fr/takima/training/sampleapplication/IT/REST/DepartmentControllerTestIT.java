@@ -13,8 +13,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
@@ -26,6 +24,43 @@ public class DepartmentControllerTestIT {
     void testGetDepartmentByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("id", equalTo(1)));
+            .andExpect(jsonPath("id", equalTo(1)))
+            .andExpect(jsonPath("name", equalTo("ASI")));
+    }
+
+    @Test
+    void testGetNonExistingDepartmentByName() throws Exception {
+        mockMvc.perform(get("/departments/NIMPORTEQUOI/"))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testGetDepartmentStudentsByName() throws Exception {
+        mockMvc.perform(get("/departments/ASI/students"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[0].id", equalTo(1)))
+            .andExpect(jsonPath("$[0].firstname", equalTo("Gautier")))
+            .andExpect(jsonPath("$[1].lastname", equalTo("Le Bloas")))
+            .andExpect(jsonPath("$[1].department.id", equalTo(1)))
+            .andExpect(jsonPath("$[1].department.name", equalTo("ASI")));
+    }
+
+    @Test
+    void testGetNonExistingDepartmentStudentsByName() throws Exception {
+        mockMvc.perform(get("/departments/NIMPORTEQUOI/students"))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testGetDepartmentCountByName() throws Exception {
+        mockMvc.perform(get("/departments/ASI/count"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", equalTo(48)));
+    }
+
+    @Test
+    void testGetNonExistingDepartmentCountsByName() throws Exception {
+        mockMvc.perform(get("/departments/NIMPORTEQUOI/count"))
+                .andExpect(status().isNotFound());
     }
 }

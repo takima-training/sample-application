@@ -13,7 +13,7 @@ INSERT INTO Students (first_name,last_name,department_id) VALUES ('Gautier','Dar
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Jonathan','Le Bloas',1);
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Franck','Bolduc',1);
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Gaston','Lagaffe',2);
-INSERT INTO Students (first_name,last_name,department_id) VALUES ('Théodor','Nomrandom',3);
+INSERT INTO Students (first_name,last_name,department_id) VALUES ('Theodor','Nomrandom',3);
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Jeanne','Ausecours',4);
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Domitille','Monton',5);
 INSERT INTO Students (first_name,last_name,department_id) VALUES ('Jacky','Sardou',6);
