@@ -6,6 +6,17 @@ cache:
   directories:
   - $HOME/.m2
 
+# Environment variables (Sonar token)
+env:
+  global:
+    secure: BBEPy28w7BnQ50lT0DdpKBlLsZwNtwsTR1BH6z2c+czReiuII0A71H2NTmntRi0mBe9C8LXgtGRlSwGrUk9FpcqAmf5W/lrIX+/HEcfde1EZJvjp5LOPWZj2a865uY63gsewi+imb7TxLjvBZC8boTZBysjiXEgXytegAE1Q0JpN5VNBP8ygw7WeTtjlXTVwkdMsASQPCBqDPEdmsH9AHel3sLpHcf81bdZ9GFxTX/IqlRatypNmv1asB7/GXFbE4cXYFMNtizqLGw3SYK5zS9bmJ/f9em4iE6zSnYXZwSaf9H/CyVOz70PlqXtCzsyWCiQuFTYUnyq5G9TYkjafhUtke35Tb+vhVvMMKq2/X/f4kzxt+Pzat7DGficapT8LovKZARaurfGQKOpVSHYz6LmkHwKdfDZfGzRExPZT6tROu+3A1rbSJaFGomNvR7e2GezEADla0hcmggAI4bcfV3oGWf9C2QK6JNeGIwslhflDKAnRN1xK6M05Q+jgu19B6bhdeTw4z3LK5pXl8GhUea7QZo8yNt0yxdly4nT4FtOlTYMggcrI+7DnGPHzXCAoNIdrhfiY6mzPdb8o7XsQiZRwyfHh8r5KInnsbYg+50Aa2t6ScXWPSxIGE1gC1Yjerus191lOCU9ARV4/eOLqFBiIrcHQLdByc1C4b1BWLXc=
+
+addons:
+  sonarcloud:
+    organization: "takima-training"
+    token:
+      secure: $SONAR_TOKEN
+
 # Define the services to use
 services:
   - docker
@@ -18,5 +29,7 @@ before_install:
 script:
   # Run Unit Test and Integration Tests
   - mvn verify
+  # SonarCloud analysis
+  - mvn sonar:sonar
 
 
