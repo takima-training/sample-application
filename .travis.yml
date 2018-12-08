@@ -1,29 +1,29 @@
 language: java
 jdk: oraclejdk8
 
-# Cache the .m2 folder and .sonar to prevent redownloading dependencies on each build
 cache:
   directories:
-  - $HOME/.m2/repository
-  - $HOME/.sonar/cache
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
+
+env:
+  global:
+    secure: DpR1th9rZvLMX0Unjr+w4plqxYs0GQTCtKfBSWX8YZ2mvOEJzHT5Hr20atc3/pzfhWNB1f4uxw/cB9ubDaE+sICamDLJRny6kToairIixUzx5pA3aiuAotTIGon5PYqltjibDLC1S7LKjosHUdWnIbegs294E2DOLYdmt1sAMJmzspgOB+ItrHrYv+x/WTbxqYykkKqzDi3G33ezuDtYz49gAdfgcjptwuZZb4NFOAcySzBa8nauzBIFAweeOyiGdVVH7h89NO0wrl7C41eFHGnbOVgL1UPacKYD38ZG4RBR5LcRve9cm7CZWYMlX1qdSH9lM5RHbTs5wISCSbDGEbwbRZK8oOl8UhBZjZRdZtDs2sM6MvCwsfMmMnJ9lF4uQ9OjSqMLimcU6sN1b65ShUe5Ygw3BZB63eTKWGuqHoQxf9L70+oY3zYaelyjOhmc8LTsVcceKIlEQFETBrnPw3AekdNEUIcFBBX9m0RgCGOC/rsb1Ia8sW0/hpHsrLp39AzMvP0BA1RqDC7jZnDHAkBF1xQYUDj+on+Nle6cDRaN7MQmdMOXFAZNGmMCKk3hIVUo/sPWdoiemIIV8JBat+V2hmoOosmsvzc9LCQNwKnbBdIvXzUMryk9moI96gyPEcGRIGqcpgNn8pK8BV3JTjnXqAUIGwRXtUAWM7yQHX4=
 
 addons:
   sonarcloud:
-    organization: "takima-training"
+    organization: takima-training
     token:
-      secure: "EWh04CRpugU1QM7yDXyh2ad5wdmW5z59gEyIa24ow/OwFMNmvmYV69koFtdDzzeen698fJ/FzLb4I33nrWKSXqu6exqCuNe4MJizi48+rjAdQHxMjZ5MdunAXxr70ZKYt+QEAMhoYhVwr4LtDcurEZAXbFWraepDbDuVPPXFYKh8p1uesATe5xQXk9zHthJiqNG4ZBD+NmFffuzYRa8YJkd0jB0lKu6r+W98AZQek9rKCNQyn9c2gbFsnB1BtsSvo0sSR7jY7XO0/GvKW0dFUDaJtG43BDshTCvbd5EEWMeoAbb14MRBxB5r9O76LyRmu06k84l8ZBTs1hB0ucmfvc5HDu8MN1dTMpfYe87P67AOeIseCqaIWSGtV6qZZv24rha0YWvH3Mw/s3zqBPLYvSXuqsKcZCpYU5WXVwIwzcq/ogFhbksxVGpmO3unggytQYQAjpOMcYIe/u1wLRvd90/+l0yEMWM8PEWn783lXw7bu+7jdwTD1zgs14W2Lx/ABYbGDBlJwaepDkVu8bTLnKqt+MAllXGhCuqIl0ZdDPFqHM6EYvHwPMcnkqwphDWUGzkWGS0tH3+cCUEHx4cR97f5jx5fYCeRtF3IU+IJ7oyqzpC11rfOyyr9XpQ5Z7Rzx5Y5RTciTG5MAy6Gi2pBB/OJhIJ0GWau5xi38Osmrg8="
+      secure: $SONAR_TOKEN
 
-# Define the services to use
 services:
   - docker
 
 before_install:
-- sudo service mysql stop
-- docker pull takimatraining/devops-training-db
-- docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
+  - sudo service mysql stop
+  - docker pull takimatraining/devops-training-db
+  - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
 script:
-  # Run Unit Test and Integration Tests, and make SonarCloud analysis
   - mvn clean install sonar:sonar
-
 
