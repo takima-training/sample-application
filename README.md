@@ -49,3 +49,13 @@ $ mvn install
         -Dsonar.login=$SONAR_TOKEN
     ```
     
+    ### Push the image to the Docker Hub
+    
+    - Connect to Docker Hub
+    - Create a repository like `<login>/sample-application`
+    - Update the image name in the `.travis.yml`
+    - Encrypt the Docker Hub login and password, and add it to the global variables in the `.travis.yml`
+    ```bash
+    $ travis encrypt DOCKER_USER=<docker_user>
+    $ travis encrypt DOCKER_PASS=<docker_pass>
+    ```
