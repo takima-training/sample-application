@@ -1,19 +1,20 @@
 language: java
 jdk: oraclejdk8
 
-# Cache the .m2 folder to prevent redownloading maven dependencies on each build
+# Cache the .m2 folder and .sonar to prevent redownloading dependencies on each build
 cache:
   directories:
-  - $HOME/.m2
+  - $HOME/.m2/repository
+  - $HOME/.sonar/cache
 
-# Environment variables (Sonar token)
+# Environment variables ($SONAR_TOKEN)
 env:
   global:
-    secure: BBEPy28w7BnQ50lT0DdpKBlLsZwNtwsTR1BH6z2c+czReiuII0A71H2NTmntRi0mBe9C8LXgtGRlSwGrUk9FpcqAmf5W/lrIX+/HEcfde1EZJvjp5LOPWZj2a865uY63gsewi+imb7TxLjvBZC8boTZBysjiXEgXytegAE1Q0JpN5VNBP8ygw7WeTtjlXTVwkdMsASQPCBqDPEdmsH9AHel3sLpHcf81bdZ9GFxTX/IqlRatypNmv1asB7/GXFbE4cXYFMNtizqLGw3SYK5zS9bmJ/f9em4iE6zSnYXZwSaf9H/CyVOz70PlqXtCzsyWCiQuFTYUnyq5G9TYkjafhUtke35Tb+vhVvMMKq2/X/f4kzxt+Pzat7DGficapT8LovKZARaurfGQKOpVSHYz6LmkHwKdfDZfGzRExPZT6tROu+3A1rbSJaFGomNvR7e2GezEADla0hcmggAI4bcfV3oGWf9C2QK6JNeGIwslhflDKAnRN1xK6M05Q+jgu19B6bhdeTw4z3LK5pXl8GhUea7QZo8yNt0yxdly4nT4FtOlTYMggcrI+7DnGPHzXCAoNIdrhfiY6mzPdb8o7XsQiZRwyfHh8r5KInnsbYg+50Aa2t6ScXWPSxIGE1gC1Yjerus191lOCU9ARV4/eOLqFBiIrcHQLdByc1C4b1BWLXc=
+    secure: "yUT3234Nqez5BOPOKCHZ4By4rqWpVyQr6hf3HaWqntE+0AuaFY0Wf76PgxbFInnVTFZF0amjYEYoN45vJuiuCfjxHizMDYgaTfnTNyahid4xIZQjI3e6XVjzRjJWkHp0VclJrD9yHMxEw0WPA9ip3r9nPwTcsk0eWZSUf84rcAnbMG8tMOk7q+1Hg6QLP2TkdyANZ/Exs9rHgJuG9F1I1Y6NOpHXNCdpdt6rFR2OTVbKtCEo22P5TZ6vZrzxfCAFUj5ok7lszUp+6wkbE5UddAAo0sv+bSfOCCmPtosnfWSMJAZrfTnVUyMgGOHZ2A1kAu0KYrL1c6qIwXKsfCTdyys280ITLs2IaS16a4AoETrp/nH9VB7Myl2YcLC8em1BJ5Qg0waLBjVhev2ziYiKeOuzELfIalBKWdK7U9l46/OU+AoP7XT7H8GPPDDt4nO1WmMiSSU3qOper5/kqmJ5EIrYyC2jNN86bO3CM41TTFKixF4ecdujIUTMtRCqMUIctcK7kTSwE+KDCSQFmc87vHWGgcI67APoR6djJ9Ra9IV0LqwJjI6mb1gtOQUyhWE/BcqGUgoKIMoin1m9vrWR3OlyVN2jsgfH3GescfOB46xvE8IHcQcDD4rWtUugYUBlhbPxiB71QGzy29gh8R5ykx3LTYPUfngsbENVJs6VWO8="
 
 addons:
   sonarcloud:
-    organization: "takima-training"
+    organization: "takima-training_sample-application"
     token:
       secure: $SONAR_TOKEN
 
@@ -27,9 +28,7 @@ before_install:
 - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
 script:
-  # Run Unit Test and Integration Tests
-  - mvn verify
-  # SonarCloud analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  # Run Unit Test and Integration Tests, and make SonarCloud analysis
+  - mvn clean install sonar:sonar
 
 

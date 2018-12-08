@@ -10,3 +10,15 @@ $ cd database
 $ docker build -t school_db .
 $ docker run -p 3306:3306 school_db
 ```
+
+### Run the application
+
+```bash
+# Run unit tests
+$ mvn test 
+# Run integration tests
+$ mvn verify
+# Generate the .jar artifact
+$ mvn install
+```
+
