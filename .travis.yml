@@ -1,15 +1,18 @@
 language: java
 jdk: oraclejdk8
 
+# Cache the .m2 folder and .sonar to prevent redownloading dependencies on each build
 cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 
+# Environment variables ($SONAR_TOKEN)
 env:
   global:
     secure: DpR1th9rZvLMX0Unjr+w4plqxYs0GQTCtKfBSWX8YZ2mvOEJzHT5Hr20atc3/pzfhWNB1f4uxw/cB9ubDaE+sICamDLJRny6kToairIixUzx5pA3aiuAotTIGon5PYqltjibDLC1S7LKjosHUdWnIbegs294E2DOLYdmt1sAMJmzspgOB+ItrHrYv+x/WTbxqYykkKqzDi3G33ezuDtYz49gAdfgcjptwuZZb4NFOAcySzBa8nauzBIFAweeOyiGdVVH7h89NO0wrl7C41eFHGnbOVgL1UPacKYD38ZG4RBR5LcRve9cm7CZWYMlX1qdSH9lM5RHbTs5wISCSbDGEbwbRZK8oOl8UhBZjZRdZtDs2sM6MvCwsfMmMnJ9lF4uQ9OjSqMLimcU6sN1b65ShUe5Ygw3BZB63eTKWGuqHoQxf9L70+oY3zYaelyjOhmc8LTsVcceKIlEQFETBrnPw3AekdNEUIcFBBX9m0RgCGOC/rsb1Ia8sW0/hpHsrLp39AzMvP0BA1RqDC7jZnDHAkBF1xQYUDj+on+Nle6cDRaN7MQmdMOXFAZNGmMCKk3hIVUo/sPWdoiemIIV8JBat+V2hmoOosmsvzc9LCQNwKnbBdIvXzUMryk9moI96gyPEcGRIGqcpgNn8pK8BV3JTjnXqAUIGwRXtUAWM7yQHX4=
 
+# Define the services to use
 services:
   - docker
 
@@ -18,11 +21,7 @@ before_install:
   - docker pull takimatraining/devops-training-db
   - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
+# Run Unit Test and Integration Tests, and make SonarCloud analysis
 script:
-  - |
-    mvn clean install sonar:sonar
-    -Dsonar.projectKey=takima-training_sample-application \
-    -Dsonar.organization=takima-training \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=$SONAR_TOKEN
+  - mvn clean install sonar:sonar -Dsonar.projectKey=takima-training_sample-application -Dsonar.organization=takima-training  -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
 
