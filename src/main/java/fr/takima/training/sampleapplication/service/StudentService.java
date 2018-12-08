@@ -17,25 +17,17 @@ public class StudentService {
     }
 
     public List<Student> getStudentsByDepartmentName(String departmentName) {
-        if (departmentName == null || departmentName.length() == 0) {
-            throw new IllegalArgumentException("The department name must not be null or empty.");
-        }
-
+        validateDepartmentName(departmentName);
         return studentDAO.findStudentsByDepartment_Name(departmentName);
     }
 
     public int getStudentsNumberByDepartmentName(String departmentName) {
-        if (departmentName == null || departmentName.length() == 0) {
-            throw new IllegalArgumentException("The department name must not be null or empty.");
-        }
-
+        validateDepartmentName(departmentName);
         return studentDAO.countAllByDepartment_Name(departmentName);
     }
 
     public Student getStudentById(long id) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("The student ID must be positive.");
-        }
+        validateStudentId(id);
 
         return studentDAO.getById(id);
     }
@@ -49,10 +41,19 @@ public class StudentService {
     }
 
     public void removeStudentById(long id) {
+        validateStudentId(id);
+        this.studentDAO.deleteById(id);
+    }
+
+    private void validateDepartmentName(String departmentName) {
+        if (departmentName == null || departmentName.length() == 0) {
+            throw new IllegalArgumentException("The department name must not be null or empty.");
+        }
+    }
+
+    private void validateStudentId(long id) {
         if (id <= 0) {
             throw new IllegalArgumentException("The student ID must be positive.");
         }
-
-        this.studentDAO.deleteById(id);
     }
 }

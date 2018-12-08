@@ -1,10 +1,12 @@
-package fr.takima.training.sampleapplication.IT.REST;
+package fr.takima.training.sampleapplication.IT;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,6 +23,7 @@ public class DepartmentControllerTestIT {
     private MockMvc mockMvc;
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetDepartmentByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/"))
             .andExpect(status().isOk())
@@ -29,12 +32,14 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetNonExistingDepartmentByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/"))
             .andExpect(status().isNotFound());
     }
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetDepartmentStudentsByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/students"))
             .andExpect(status().isOk())
@@ -46,12 +51,14 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetNonExistingDepartmentStudentsByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/students"))
             .andExpect(status().isNotFound());
     }
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetDepartmentCountByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/count"))
             .andExpect(status().isOk())
@@ -59,6 +66,7 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
+    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
     void testGetNonExistingDepartmentCountsByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/count"))
                 .andExpect(status().isNotFound());
