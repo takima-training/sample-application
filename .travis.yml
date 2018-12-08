@@ -30,6 +30,6 @@ script:
   # Run Unit Test and Integration Tests
   - mvn verify
   # SonarCloud analysis
-  - mvn sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 
