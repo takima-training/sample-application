@@ -1,11 +1,21 @@
 language: java
 jdk: oraclejdk8
 
+# Cache the .m2 folder to prevent redownloading maven dependencies on each build
 cache:
   directories:
   - $HOME/.m2
 
+# Define the services to use
+services:
+  - docker
+
+before_install:
+- docker pull takimatraining/devops-training-db
+- docker run -p 3306:3306 takimatraining/devops-training-db
+
 script:
-  mvn verify
+  # Run Unit Test and Integration Tests
+  - mvn test && mvn verify # Skip Integration Tests when Unit Tests fail
 
 
