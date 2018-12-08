@@ -11,6 +11,7 @@ services:
   - docker
 
 before_install:
+- sudo service mysql stop
 - docker pull takimatraining/devops-training-db
 - docker run -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 
