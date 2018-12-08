@@ -22,3 +22,15 @@ $ mvn verify
 $ mvn install
 ```
 
+### Configure SonarCloud
+
+- Go to [https://sonarcloud.io]()
+- My account > Security
+- Generate a new token
+- Encrypt it :
+    ```bash
+    $ gem install travis
+    $ travis encrypt <TOKEN>
+    ```
+ - **OPTIONAL :** Add your organisation into the `.travis.yml` file
+ - Add this token into the `.travis.yml` file 

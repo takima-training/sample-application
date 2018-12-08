@@ -26,7 +26,6 @@
         <mockito.version>2.23.0</mockito.version>
         <surefire-plugin.version>2.19.1</surefire-plugin.version>
         <junit-surefire-provider.version>1.0.1</junit-surefire-provider.version>
-        <sonar.tests>src/test</sonar.tests>
         <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
         <sonar.jacoco.reportPaths>target/jacoco.exec</sonar.jacoco.reportPaths>
         <sonar.surefire.reportPaths>target/surefire-reports</sonar.surefire.reportPaths>
@@ -34,6 +33,7 @@
         <sonar.language>java</sonar.language>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+
     </properties>
 
     <dependencies>
