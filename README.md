@@ -30,7 +30,22 @@ $ mvn install
 - Encrypt it :
     ```bash
     $ gem install travis
-    $ travis encrypt <TOKEN>
+    $ travis encrypt SONAR_TOKEN=<TOKEN>
     ```
- - **OPTIONAL :** Add your organisation into the `.travis.yml` file
- - Add this token into the `.travis.yml` file 
+ - Edit the `.travis.yml` such as :
+    ```yml
+    env:
+      global:
+        secure: <ENCRYPTED_TOKEN>
+    
+    #...
+    
+    script:
+      - |
+        mvn clean install sonar:sonar \
+        -Dsonar.projectKey=<SONAR_PROJECT_KEY> \
+        -Dsonar.organization=<SONAR_ORGANISATION_KEY> \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=$SONAR_TOKEN
+    ```
+    

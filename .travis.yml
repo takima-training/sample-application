@@ -7,10 +7,13 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 
-# Environment variables ($SONAR_TOKEN)
+# Environment variables ($SONAR_TOKEN, $DOCKER_USER, $DOCKER_PASS)
 env:
   global:
-    secure: DpR1th9rZvLMX0Unjr+w4plqxYs0GQTCtKfBSWX8YZ2mvOEJzHT5Hr20atc3/pzfhWNB1f4uxw/cB9ubDaE+sICamDLJRny6kToairIixUzx5pA3aiuAotTIGon5PYqltjibDLC1S7LKjosHUdWnIbegs294E2DOLYdmt1sAMJmzspgOB+ItrHrYv+x/WTbxqYykkKqzDi3G33ezuDtYz49gAdfgcjptwuZZb4NFOAcySzBa8nauzBIFAweeOyiGdVVH7h89NO0wrl7C41eFHGnbOVgL1UPacKYD38ZG4RBR5LcRve9cm7CZWYMlX1qdSH9lM5RHbTs5wISCSbDGEbwbRZK8oOl8UhBZjZRdZtDs2sM6MvCwsfMmMnJ9lF4uQ9OjSqMLimcU6sN1b65ShUe5Ygw3BZB63eTKWGuqHoQxf9L70+oY3zYaelyjOhmc8LTsVcceKIlEQFETBrnPw3AekdNEUIcFBBX9m0RgCGOC/rsb1Ia8sW0/hpHsrLp39AzMvP0BA1RqDC7jZnDHAkBF1xQYUDj+on+Nle6cDRaN7MQmdMOXFAZNGmMCKk3hIVUo/sPWdoiemIIV8JBat+V2hmoOosmsvzc9LCQNwKnbBdIvXzUMryk9moI96gyPEcGRIGqcpgNn8pK8BV3JTjnXqAUIGwRXtUAWM7yQHX4=
+    secure:
+      - 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
 
 # Define the services to use
 services:
@@ -23,5 +26,17 @@ before_install:
 
 # Run Unit Test and Integration Tests, and make SonarCloud analysis
 script:
-  - mvn clean install sonar:sonar -Dsonar.projectKey=takima-training_sample-application -Dsonar.organization=takima-training  -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+  - |
+    mvn clean install sonar:sonar \
+    -Dsonar.projectKey=takima-training_sample-application \
+    -Dsonar.organization=takima-training \
+    -Dsonar.host.url=https://sonarcloud.io \
+    -Dsonar.login=$SONAR_TOKEN
 
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
+  - export IMAGE_NAME=gdarchen/sample-application
+  - docker build -t $IMAGE_NAME:$COMMIT .
+  - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+  - docker push $IMAGE_NAME
