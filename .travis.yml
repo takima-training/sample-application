@@ -17,6 +17,6 @@ before_install:
 
 script:
   # Run Unit Test and Integration Tests
-  - mvn test && mvn verify # Skip Integration Tests when Unit Tests fail
+  - mvn verify
 
 
