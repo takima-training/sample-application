@@ -32,12 +32,16 @@ script:
     -Dsonar.host.url=https://sonarcloud.io \
     -Dsonar.login=$SONAR_TOKEN
 
+# Build an image containing the .jar and push it to the Docker Hub
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
-  - echo $TAG
-  - echo $TRAVIS_BRANCH
   - export IMAGE_NAME=takimatraining/sample-application
-  - docker build -t $IMAGE_NAME:$COMMIT .
-  - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+  - docker build -t $IMAGE_NAME:$TRAVIS_COMMIT .
+  - docker tag $IMAGE_NAME:$TRAVIS_COMMIT $IMAGE_NAME:$TAG
   - docker push $IMAGE_NAME:$TAG
+
+# Send an email to the commiter if the pipeline failed at some point
+notifications:
+  email:
+    on_failure: always
