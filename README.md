@@ -1,4 +1,7 @@
-# sample-application [![Build Status](https://travis-ci.org/takima-training/sample-application.svg?branch=master)](https://travis-ci.org/takima-training/sample-application)
+[![Build Status](https://travis-ci.org/takima-training/sample-application.svg?branch=master)](https://travis-ci.org/takima-training/sample-application)
+[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=takima-training_sample-application&metric=coverage)](https://sonarcloud.io/api/project_badges/measure?project=takima-training_sample-application&metric=coverage)
+
+# sample-application 
 This is a sample application exposing a simple REST API
 
 ## Local development
@@ -33,10 +36,10 @@ $ mvn install
     $ travis encrypt SONAR_TOKEN=<TOKEN>
     ```
  - Edit the `.travis.yml` such as :
-    ```yml
+    ```yaml
     env:
       global:
-        secure: <ENCRYPTED_TOKEN>
+        - secure: <ENCRYPTED_TOKEN>
     
     #...
     
@@ -58,4 +61,12 @@ $ mvn install
     ```bash
     $ travis encrypt DOCKER_USER=<docker_user>
     $ travis encrypt DOCKER_PASS=<docker_pass>
+    ```
+    and 
+    ```yaml
+    env:
+      global:
+        # [...] other tokens
+        - secure: <encrypted Docker Username>
+        - secure: <encrypted Docker Password>
     ```
