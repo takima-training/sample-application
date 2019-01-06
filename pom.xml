@@ -25,6 +25,7 @@
         <jupiter.vesion>5.1.0</jupiter.vesion>
         <mockito.version>2.23.0</mockito.version>
         <surefire-plugin.version>2.19.1</surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
         <junit-surefire-provider.version>1.0.1</junit-surefire-provider.version>
         <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
         <sonar.jacoco.reportPaths>target/jacoco.exec</sonar.jacoco.reportPaths>
@@ -95,6 +96,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
                 <configuration>
                     <append>true</append>
                 </configuration>
