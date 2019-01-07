@@ -7,12 +7,14 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 
-# Environment variables ($SONAR_TOKEN, $DOCKER_USER, $DOCKER_PASS)
+# Environment variables ($SONAR_TOKEN, $DOCKER_USER, $DOCKER_PASS, $DEPLOY_USER, $SERVER_HOST)
 env:
   global:
     - secure: "DpR1th9rZvLMX0Unjr+w4plqxYs0GQTCtKfBSWX8YZ2mvOEJzHT5Hr20atc3/pzfhWNB1f4uxw/cB9ubDaE+sICamDLJRny6kToairIixUzx5pA3aiuAotTIGon5PYqltjibDLC1S7LKjosHUdWnIbegs294E2DOLYdmt1sAMJmzspgOB+ItrHrYv+x/WTbxqYykkKqzDi3G33ezuDtYz49gAdfgcjptwuZZb4NFOAcySzBa8nauzBIFAweeOyiGdVVH7h89NO0wrl7C41eFHGnbOVgL1UPacKYD38ZG4RBR5LcRve9cm7CZWYMlX1qdSH9lM5RHbTs5wISCSbDGEbwbRZK8oOl8UhBZjZRdZtDs2sM6MvCwsfMmMnJ9lF4uQ9OjSqMLimcU6sN1b65ShUe5Ygw3BZB63eTKWGuqHoQxf9L70+oY3zYaelyjOhmc8LTsVcceKIlEQFETBrnPw3AekdNEUIcFBBX9m0RgCGOC/rsb1Ia8sW0/hpHsrLp39AzMvP0BA1RqDC7jZnDHAkBF1xQYUDj+on+Nle6cDRaN7MQmdMOXFAZNGmMCKk3hIVUo/sPWdoiemIIV8JBat+V2hmoOosmsvzc9LCQNwKnbBdIvXzUMryk9moI96gyPEcGRIGqcpgNn8pK8BV3JTjnXqAUIGwRXtUAWM7yQHX4="
     - secure: "BpFVGmeNxndQJyqvYugd/4NQ8kDgnDYBD1w/V67/q5dVBSkbRR8MsS35a2Vwn5sOHPSwl2syENivKED+9SB65Gd8ZMmdxechYwGKMnfmF7ItksN9BlifGgcadrwR42tTRSdhX8pU5exMxF60JNUdbYDfMIndqNk8OAEBZpqFKfhgPswAiN0Yu2aSWtmEW7UQENyFZl+7xDI4KUhfhwESB0Yfq6jUpcUOEO1upKY/8Gm8gqq4L/dXgBQun0sCVYJl4aLptSz6ADcCc8KCPoZp69j7HBqJ2T+JEHhNramYvTNByzewnLwNM+i48yD0oLLc3SV3wVn8nrdOmHulFo/tHsL49TtLutlx2tOEhzQ7XsrDZ63YxPGUeGITDqijS8eu0q/QbxQMhxYprogktxkmeOuXNPWHNJeCcn5uffCtCCqUVILcoMN5G86ls6hGYZ4qWRFBRo7Y3ftupnpTBPbeTR1JhKgoM8+lyq0DfSdy3Ppt1OdSfowdxYcl0SBH6nEHQsHZeiM1hs8QTgvVnhyj8iqdkzKsbzB34V7ueyCZoDqWn/UJ9PtM01SEAbJumv1Z633naiPpV5vHmi2TOQqrr4kPAOMH/9t7cdo/Zp1nmR0OnkgEjFEEqz/1OBZFP/8bVGC0IU75jzAxpeL+dirwRud5MYP3d2ksKxfx/37tPe8="
     - secure: "2aG59z5ok2hKEfH/NXj0QyIGm+rPEW7/wI4lJj5Xp05VDdpYnHSIVtEk0X1J92FZoAMAgQjkriPQryWbB2HlKIS3lWfU9GpnKh8CBGUKLfhXiUx+xwGVzo2zbHpoHSECwTD6hlpp9SdmWrC7l7NTaJB1VrxY3yvkc9Z+7iGYWP6TR5/dhcHyNpC0M4jabV33Agsjooz9ovaN7p6+QU9bMBrOoiz/+TbXHFzDS47i8TsnI16KAB8dECMAOiPOl8XzmfHDr7KDLctgpD76UH7ETjfdPbwtNNaOcc3EUnhYSzg6RuBUKQKQX7m+gHPxdQ3+PnxaMGsTKQpJitCxy+iZLUkm80oGjvzEol+qQ6TzfGdm1v9dfn1yQJnYi7zZP83NkeOWWlQacDMasnpmNWVCeAPiqghhdO6bP6FsQq6dS+VJbsgPccj/Z+ai8nBXr6gOtvHmTfixzYcGcErPDXZOv2QKfgqMkRSuDl//viX5S3nC9+1ydd+0CLq131sqXPiHk2EI47JIgx6TNCfu51g8U9bgEHDqpO2keTjiXdt05GAxH70hSXY35aD/TkYTTfaQh8tEL7c8o9RixD8YagUbtZamKnqExoXksUFHQvz+8eP+TqftAMvn0AD+rexPsX4NKIks/N1cohUh0Bm7eaicWgDQKhrHJSV3LrHBpK0WpJI="
+    - secure: "wy6hmqVtEQ8lXzUQbZ+K5ftT0AK6zaahATIjrFSO/mRCt9vAWsT+fwDynQKch9MpYsWAm2aU5Zu2BB2AbTnENEyTbK/bpOCNHd9eF9hyvZZkDqOL/IFp9eAsw+ZuBy96l1+MaVpKbZoFhf+Dp/dQb6a2aoZ+iUNIn1a1hW8HzKC6do4Kr7Qe0V//3xwxTJ++SPWK/xIqWcVsYSKKIC+60shVxonZLtQ1WwkZK1YEbS92U9gY2h7GrNCa1rW+ZprfnHFxVyBlypIkCY9003RWVIlmKIutW8b53Y1Q8PgWBCVCYjj57wDvFcS4ZbS0g9wP1UB5cPhplwzNkmDTYT3cI6OdBNCpn4+RaXXdiRSgju0Gbu9PFx5Yy9ArLPt5YoYGn/tbvZZ4mVGbqIym557GXaXj9RysFpqk8bKLm41NXQ37utJ2a+T5Jdef+wyfmphAotTpsCXZsQjl0BpXIblTSbt3I/Y+F43tNlWFf+UadTxJG8fQcl+1zLN9yArVIekDQd8aXN8uodGH7NUnewLgQnUB68sw3TRJzm/ImDSAkM1MceVlQhJ/K788Fo0Eied/0G3kMHT079XXjaKyJ4GQ1aOIzx1+7nSi+nOuvIiwAw+XeU4ES2fbUV7mhCBvYW0CB0gFrZbx86XNDkDnZjUaFCk+OJSOekQRsPeF0+4EVc8="
+    - secure: "Q5j0XRQbiUceWi4aEg00LKaQzbZ+/B+GA7oS8h86sOF5jmPGXfQZZHjUaDvRjhTC+PWEpqvjYjrgMfzlz3p+vRqsuJAQesyPrtcg9vZ/KHQFx8M0nJhBzVZY1BwS0C6auo6vqwVkHNpUFNVj7GkkS4T6LZElQLfe09/qI7BLI1rlUxhQdANIx+rQaIbQ3d3XWo98/mVhd9obpLRS2wkk59jqt/A1PULHDJStcKD1CTfuOeF1+lC/XltpaiLtf/44m8SDfEZP+7taY5NOYWLh3rmFfZmye2gfKCsQupZSq78P4bSBPEJ074upmojp1gmAAyg2oDhaHBtVGlTGL5y8qzKGGZW0Ln7HVPen73yCusn81IUSFhsgT7aIxgc/ngPRNbjmAIuAAM2w2AL8lAqLoa+ew5GFEvZFeaHRrbAqHpMrFZ10bFcHCbuwedNNOAg5nC7/5Y/OXWueUYjL6V/vJUiP+K5VbwAcyVXjqbmFTuc6bPDsMIvUbsVkzMgMnSpAD9jRD1TG6TjmA//9Z8ms/lWr8NpVnM0kbHfe0ef+InWW4arlMcW+puQlYeEnH+Ywf4HW61Im9nXYii09H+fZn1DeZ04cVQZ2zzGGPhzTZKAX8wlsrRf4EYK8uz19ZdRXsIk4SpIBiEg5pwnQF1UoG6hT7zYWO674h0QcjlGbDVI="
 
 # Define the services to use
 services:
@@ -22,6 +24,14 @@ before_install:
   - sudo service mysql stop
   - docker pull takimatraining/devops-training-db
   - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
+
+# Prepare deploy
+  - openssl aes-256-cbc -K $encrypted_3f3fc2535992_key -iv $encrypted_3f3fc2535992_iv
+    -in travis_deploy_rsa.enc -out /tmp/travis_deploy_rsa -d
+  - chmod 600 /tmp/travis_deploy_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add /tmp/travis_deploy_rsa
+  - echo -e "Host $SERVER_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 # Run Unit Test and Integration Tests, and make SonarCloud analysis
 script:
@@ -44,3 +54,10 @@ script:
 notifications:
   email:
     on_failure: always
+
+# Deploy updated container over ssh
+deploy:
+  provider: script
+  script: ssh -i /tmp/travis_deploy_rsa $DEPLOY_USER@$SERVER_HOST "sudo docker pull $IMAGE_NAME:$TAG && sudo docker rm -f app || true && sudo docker run -d --network net -p 80:8080 --name app $IMAGE_NAME:$TAG"
+  on:
+    branch: master
