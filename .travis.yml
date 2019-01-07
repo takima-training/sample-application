@@ -33,7 +33,6 @@ script:
     -Dsonar.login=$SONAR_TOKEN
 
 # Build an image containing the .jar and push it to the Docker Hub
-after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
   - export IMAGE_NAME=takimatraining/sample-application
