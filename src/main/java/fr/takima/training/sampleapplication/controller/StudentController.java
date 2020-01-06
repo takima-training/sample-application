@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,6 +19,15 @@ public class StudentController {
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    @GetMapping
+    public ResponseEntity<Object> getAll() {
+        Optional<List<Student>> studentOptional = Optional.ofNullable(this.studentService.findAll());
+        if (!studentOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return  ResponseEntity.ok(studentOptional.get());
     }
 
     @GetMapping(value = "/{id}")

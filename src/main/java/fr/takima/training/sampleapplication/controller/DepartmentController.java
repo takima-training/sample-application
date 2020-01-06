@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +23,11 @@ public class DepartmentController {
     public DepartmentController(DepartmentService departmentService, StudentService studentService) {
         this.departmentService = departmentService;
         this.studentService = studentService;
+    }
+
+    @GetMapping()
+    public ResponseEntity<Object> getAll() {
+        return ResponseEntity.ok(this.departmentService.findAll());
     }
 
     @GetMapping("/{departmentName}/students")

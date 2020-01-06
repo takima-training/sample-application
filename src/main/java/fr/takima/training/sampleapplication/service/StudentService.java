@@ -26,6 +26,10 @@ public class StudentService {
         return studentDAO.countAllByDepartment_Name(departmentName);
     }
 
+    public List<Student> findAll() {
+        return studentDAO.findAll();
+    }
+
     public Student getStudentById(long id) {
         validateStudentId(id);
 
