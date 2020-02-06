@@ -1,17 +1,9 @@
-FROM mysql:5.7
-MAINTAINER Takima
-
-ENV MYSQL_DATABASE=SchoolOrganisation \
-    MYSQL_ROOT_PASSWORD=takima \
-    MYSQL_USER=takima \
-    MYSQL_PASSWORD=takipassword
+FROM postgres:9.6-alpine
 
 ADD ./scripts/ /docker-entrypoint-initdb.d
-EXPOSE 3306
 
-# Entrypoint overload to catch the ctrl+c and stop signals
-ENTRYPOINT ["/bin/bash", "/run.sh"]
-CMD ["mysqld"]
+VOLUME /home/alex/Bureau/devops-cpe/tp-docker/database/data:/var/lib/postgresql/data
 
-COPY run.sh /run.sh
-
+ENV POSTGRES_DB=db \
+    POSTGRES_USER=usr \
+    POSTGRES_PASSWORD=pwd

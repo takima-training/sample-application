@@ -1,0 +1,28 @@
+version: '2.4'
+services:
+  backend:
+    container_name: backend
+    image: my-backend
+    networks:
+      - network
+    depends_on:
+      - database
+
+  database:
+    container_name: database
+    image: my-database
+    networks:
+      - network
+
+  httpd:
+    container_name: httpd
+    image: my-httpd
+    ports:
+      - "80:80"
+    networks:
+      - network
+    depends_on:
+      - backend
+
+networks:
+  network:
